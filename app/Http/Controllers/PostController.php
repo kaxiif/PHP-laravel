@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Post;
+use App\Models\User;
 
 class postController extends Controller
 {
@@ -189,8 +190,16 @@ class postController extends Controller
         
        
         Post::destroy(4);
+        
+        // for deleting multiple rows
+        Post::destroy([4,5]);
     
     }
+
+    // public function oneToOne($id){
+    //     return User::find($id)->post->content;
+
+    // }
    
 
     public function show_post($id,$name){

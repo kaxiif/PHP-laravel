@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,16 @@ Route::get('/binsert2/{id}','\App\Http\Controllers\PostController@binsert2');
 Route::get('/createM','\App\Http\Controllers\PostController@createM');
 Route::get('/updateM','\App\Http\Controllers\PostController@updateM');
 Route::get('/delete1','\App\Http\Controllers\PostController@delete1');
+Route::get('/user/{id}/post','\App\Http\Controllers\PostController@oneToOne');
+
+
 
 
 Route::get('posts/{id}/{name}','\App\Http\Controllers\PostController@show_post');
+
+
+
+    
 //Route::get('/posts/{id}', '\App\Http\Controllers\PostController');
 
 
@@ -48,3 +56,8 @@ Route::get('posts/{id}/{name}','\App\Http\Controllers\PostController@show_post')
 // Route::get('/posts/{id}/{name}', function ($id,$name) {
 //     return 'Post number '. $id. " ". $name;
 // });
+
+Route::get('/user/{id}/post',function($id){
+     $post = User::find($id)->post;
+     return $post;
+    });
