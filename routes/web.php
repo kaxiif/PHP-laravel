@@ -67,3 +67,20 @@ Route::get('/user/{id}/post',function($id){
         
         return Post::find($id)->user->name;
        });
+
+       Route::get('/posts',function(){
+        $user = User::find(1);
+        foreach($user->posts as $post)
+        echo $post->title."<br>";
+        //return Post::find($id)->user->name;
+       });
+
+       Route::get('/user/{id}/role',function($id){
+        $user = User::find($id);
+        foreach($user->roles as $role)
+        
+        return $role->name;
+       });
+
+       
+
