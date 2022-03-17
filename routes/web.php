@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,5 +60,10 @@ Route::get('posts/{id}/{name}','\App\Http\Controllers\PostController@show_post')
 
 Route::get('/user/{id}/post',function($id){
      $post = User::find($id)->post;
-     return $post;
+     return User::find($id)->post->content;
     });
+
+    Route::get('/post/{id}/user',function($id){
+        
+        return Post::find($id)->user->name;
+       });
