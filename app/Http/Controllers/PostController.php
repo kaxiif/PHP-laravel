@@ -184,6 +184,13 @@ class postController extends Controller
         Post::where('id',3)->update(['title'=>'update','content'=>'update and config mass asssigment']);
     
     }
+
+    public function delete1(){
+        
+       
+        Post::destroy(4);
+    
+    }
    
 
     public function show_post($id,$name){
