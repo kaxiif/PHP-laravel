@@ -29,6 +29,7 @@ Route::get('/find','\App\Http\Controllers\PostController@find');
 
 Route::get('/binsert2/{id}','\App\Http\Controllers\PostController@binsert2');
 Route::get('/createM','\App\Http\Controllers\PostController@createM');
+Route::get('/updateM','\App\Http\Controllers\PostController@updateM');
 
 
 Route::get('posts/{id}/{name}','\App\Http\Controllers\PostController@show_post');

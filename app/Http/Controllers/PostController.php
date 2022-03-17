@@ -174,10 +174,15 @@ class postController extends Controller
         
        
         Post::create(['title'=>'create','content'=>'Create and config mass asssigment']);
+
+
+    }
+
+    public function updateM(){
         
-
-
-
+       
+        Post::where('id',3)->update(['title'=>'update','content'=>'update and config mass asssigment']);
+    
     }
    
 
