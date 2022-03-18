@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Post;
@@ -89,6 +90,15 @@ Route::get('/user/{id}/post',function($id){
         
         return $role->pivot->created_at;
        });
+
+
+       Route::get('/user/country',function(){
+        $country = Country::find(2);
+        foreach($country->posts as $post)
+        
+        return $post->title;
+       });
+
 
        
 
