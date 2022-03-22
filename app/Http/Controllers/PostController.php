@@ -14,10 +14,12 @@ class postController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
+        $posts= Post::all();
+        return view('posts.index', compact('posts'));
         //
-        return "this is controller ".$id;
+        //return view('posts.create');
     }
 
     /**
@@ -28,6 +30,8 @@ class postController extends Controller
     public function create()
     {
         //
+        
+        return view('posts.create');
     }
 
     /**
@@ -39,6 +43,9 @@ class postController extends Controller
     public function store(Request $request)
     {
         //
+        //return $request->all();
+        //dd($request);
+        Post::create($request->all());
     }
 
     /**
@@ -50,7 +57,9 @@ class postController extends Controller
     public function show($id)
     {
         //
-        return " this is the id".$id;
+        $post =Post::findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -62,6 +71,8 @@ class postController extends Controller
     public function edit($id)
     {
         //
+        $post= Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -74,6 +85,10 @@ class postController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        $post->update($request->all());
+        return redirect('/posts');
     }
 
     /**
@@ -85,6 +100,9 @@ class postController extends Controller
     public function destroy($id)
     {
         //
+        dd("hello");
+        $post = Post::whereId($id)->delete();
+        return redirect('/posts');
     }
 
     public function contact(){
